@@ -153,8 +153,10 @@
       containerRow.insertAdjacentHTML("beforeend", newNoteHTML);
     }
 
+    let newNoteData = containerRow.lastElementChild.children[1].firstElementChild.innerText
+
     let noteData = {
-      "note": containerRow.lastElementChild.children[1].firstElementChild.innerText;
+      "note": newNoteData;
     }
 
     const addNoteBtn = document.querySelector(".btn.btn-primary");
