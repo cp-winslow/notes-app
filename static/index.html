@@ -151,6 +151,12 @@
       containerRow.insertAdjacentHTML("beforeend", newNoteHTML);
     }
 
+    function apiPost() {
+      postData('/api/notes', noteData)
+        .then(data => console.log(JSON.stringify(data))) // JSON-string from `response.json()` call
+        .catch(error => console.error(error));
+    }
+
     const containerRow = document.querySelector(".row");
 
     let newNoteData = containerRow.lastElementChild.children[1].firstElementChild.innerText
@@ -162,21 +168,14 @@
     const addNoteBtn = document.querySelector(".btn.btn-primary");
 
     addNoteBtn.addEventListener("click", (e) => {
-      e.preventDefault();
       addNote();
+
+      if (e.target.nodeName.toUpperCase() !== "DIV.NOTE") {
+        const docBody = document.querySelector("body");
+        docBody.addEventListener("click", apiPost);
+        docBody.removeEventListener("click", apiPost);
+      }
     });
-
-    function apiPost() {
-      postData('/api/notes', noteData)
-        .then(data => console.log(JSON.stringify(data))) // JSON-string from `response.json()` call
-        .catch(error => console.error(error));
-    }
-
-    const docBody = document.querySelector("body");
-
-    docBody.addEventListener("click", apiPost);
-
-    docBody.removeEventListener("click", apiPost);
 
   </script>
 </body>
