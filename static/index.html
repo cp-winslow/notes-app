@@ -166,12 +166,14 @@
       addNote();
     });
 
-    addNoteBtn.removeEventListener("click", (e) => {
-      e.preventDefault();
+    document.body.addEventListener("click", (apiPost) => {
       postData('/api/notes', noteData)
         .then(data => console.log(JSON.stringify(data))) // JSON-string from `response.json()` call
         .catch(error => console.error(error));
-    });
+    })
+
+    document.body.removeEventListener("click", apiPost);
+
   </script>
 </body>
 </html>
