@@ -172,9 +172,11 @@
         .catch(error => console.error(error));
     }
 
-    document.body.addEventListener("click", apiPost)
+    const docBody = document.querySelector("body");
 
-    document.body.removeEventListener("click", apiPost);
+    docBody.addEventListener("click", apiPost);
+
+    docBody.removeEventListener("click", apiPost);
 
   </script>
 </body>
