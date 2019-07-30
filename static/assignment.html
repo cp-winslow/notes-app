@@ -132,9 +132,9 @@
         .then(response => response.json()); // parses JSON response into native JavaScript objects
     }
 
-    let noteData = {
+    /*let noteData = {
       "note": "This is another note"
-    }
+    }*/
 
     postData('/api/notes', noteData)
       .then(data => console.log(JSON.stringify(data))) // JSON-string from `response.json()` call
@@ -150,13 +150,16 @@
     function addNote() {
       const containerRow = document.querySelector(".row");
 
+      let stickyNoteCounter = 3;
+      stickyNoteCounter += 1;
+
       const newNoteHTML = `
       <div class="note">
         <div class="note-header">
-          <h5 class="modal-title">Sticky note 1.</h5>
+          <h5 class="modal-title">Sticky note ` + stickyNoteCounter + `</h5>
         </div>
         <div class="note-body">
-          <p class="note-text" contenteditable="true"></p>
+          <p class="note-text" contenteditable="true">Add your Sticky Note here!</p>
         </div>
         <div class="note-footer">
           <button type="button" class="close" aria-label="Delete">
