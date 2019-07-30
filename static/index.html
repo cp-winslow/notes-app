@@ -132,32 +132,13 @@
         .then(response => response.json()); // parses JSON response into native JavaScript objects
     }
 
-    /*
-    let noteData = {
-      "note": "This is another note"
-    }
-
-    postData('/api/notes', noteData)
-      .then(data => console.log(JSON.stringify(data))) // JSON-string from `response.json()` call
-      .catch(error => console.error(error));
-    */
-
-    const addNoteBtn = document.querySelector(".btn.btn-primary");
-
-    addNoteBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      addNote();
-    });
-
-    let stickyNoteCounter = document.querySelectorAll(".note");
-
     function addNote() {
       const containerRow = document.querySelector(".row");
 
       const newNoteHTML = `
       <div class="note">
         <div class="note-header">
-          <h5 class="modal-title">Sticky note ` + stickyNoteCounter.length + `.</h5>
+          <h5 class="modal-title">Sticky note 1.</h5>
         </div>
         <div class="note-body">
           <p class="note-text" contenteditable="true">Add your Sticky Note here!</p>
@@ -172,6 +153,23 @@
       containerRow.insertAdjacentHTML("beforeend", newNoteHTML);
     }
 
+    let noteData = {
+      "note": containerRow.lastElementChild.children[1].firstElementChild.innerText;
+    }
+
+    const addNoteBtn = document.querySelector(".btn.btn-primary");
+
+    addNoteBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      addNote();
+    });
+
+    addNoteBtn.removeEventListener("click", (e) => {
+      e.preventDefault();
+      postData('/api/notes', noteData)
+        .then(data => console.log(JSON.stringify(data))) // JSON-string from `response.json()` call
+        .catch(error => console.error(error));
+    });
   </script>
 </body>
 </html>
