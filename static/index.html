@@ -132,13 +132,15 @@
         .then(response => response.json()); // parses JSON response into native JavaScript objects
     }
 
-    /*let noteData = {
+    /*
+    let noteData = {
       "note": "This is another note"
-    }*/
+    }
 
     postData('/api/notes', noteData)
       .then(data => console.log(JSON.stringify(data))) // JSON-string from `response.json()` call
       .catch(error => console.error(error));
+    */
 
     const addNoteBtn = document.querySelector(".btn.btn-primary");
 
