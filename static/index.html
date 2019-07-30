@@ -149,16 +149,15 @@
       addNote();
     });
 
+    let stickyNoteCounter = document.querySelectorAll(".notes");
+
     function addNote() {
       const containerRow = document.querySelector(".row");
-
-      let stickyNoteCounter = 3;
-      stickyNoteCounter += 1;
 
       const newNoteHTML = `
       <div class="note">
         <div class="note-header">
-          <h5 class="modal-title">Sticky note ` + stickyNoteCounter + `</h5>
+          <h5 class="modal-title">Sticky note ` + stickyNoteCounter.length + `.</h5>
         </div>
         <div class="note-body">
           <p class="note-text" contenteditable="true">Add your Sticky Note here!</p>
