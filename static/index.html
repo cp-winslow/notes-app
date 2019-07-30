@@ -133,8 +133,6 @@
     }
 
     function addNote() {
-      const containerRow = document.querySelector(".row");
-
       const newNoteHTML = `
       <div class="note">
         <div class="note-header">
@@ -152,6 +150,8 @@
 
       containerRow.insertAdjacentHTML("beforeend", newNoteHTML);
     }
+
+    const containerRow = document.querySelector(".row");
 
     let newNoteData = containerRow.lastElementChild.children[1].firstElementChild.innerText
 
